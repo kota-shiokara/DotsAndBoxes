@@ -8,6 +8,7 @@ final String WHITE = "#FFFFFF";
 /*----- 変数宣言 -----*/
 boolean isClick = false;
 boolean initialize = false;
+boolean moveScene = false;
 
 /*----- オブジェクト -----*/
 Scene g;
