@@ -24,22 +24,29 @@ class HomeScene extends Scene{
 }
 
 class Home{
-  private float bx, by;
+  private float bx, by; // 仮のボタン用変数
   Home(){
     bx = width / 2;
     by = height / 2;
   }
   
   void run(){
-    if((mouseX > bx - 25) && (mouseX < bx + 25) && (mouseY > by - 25) && (mouseY < by + 25)){
+    fill(0);
+    textSize(35);
+    text("Dots And Boxes",width / 3, height / 4); // 仮タイトル
+    button();
+  }
+
+  void button(){ // 仮のボタン用関数
+    if((mouseX > bx - 75) && (mouseX < bx + 75) && (mouseY > by - 25) && (mouseY < by + 25)){
       fill(124);
-      ellipse(bx, by, 50, 50);
+      ellipse(bx, by, 150, 50);
       if(mousePressed){
         moveScene = true;
       }
     }else{
       fill(255);
-      ellipse(bx, by, 50, 50);
+      ellipse(bx, by, 150, 50);
     }
   }
 }

@@ -14,10 +14,12 @@ class InitialScene extends Scene{
   }
   
   void drawScene(){
-    if(millis() / 1000 - timer > 2) moveScene = true;
+    if(millis() / 1000 - timer > 1.5) moveScene = true;
     else initialize();
     background(0);
     fill(255);
+
+    textSize(14);
     text("Loading...", width / 2 - 30, height / 2 + 30);
   }
   
