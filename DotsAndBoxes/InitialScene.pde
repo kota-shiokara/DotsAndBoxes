@@ -1,20 +1,27 @@
 class InitialScene extends Scene{
+  
   private String scene;
+  
   InitialScene(String _scene){
     scene = _scene;
   }
   
+  void initialize(){
+    initialize = true;
+    moveScene = false;
+  }
+  
   void drawScene(){
-    
+    background(0);
+    text("Loading...", width / 2, height / 2);
   }
   
   Scene nextScene(){
-    if(moveScene) return SceneTerminal(scene);
+    if(moveScene){
+      initialize();
+      return SceneTerminal(scene);
+    }
     return this;
-  }
-  
-  void initialize(){
-    initialize = false;
   }
   
   Scene SceneTerminal(String scene){

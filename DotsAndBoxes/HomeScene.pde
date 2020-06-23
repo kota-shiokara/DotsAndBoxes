@@ -1,7 +1,14 @@
 Home homescene;
 
 class HomeScene extends Scene{
+  
+  void initialize(){
+    initialize = false;
+    homescene = new Home();
+  }
+  
   void drawScene(){
+    if(initialize) initialize();
     homescene.run();
   }
   
@@ -17,5 +24,6 @@ class Home{
   }
   
   void run(){
+    
   }
 }
