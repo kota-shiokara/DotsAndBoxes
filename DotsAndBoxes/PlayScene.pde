@@ -2,18 +2,14 @@ Play playscene;
 
 class PlayScene extends Scene{
   
-  private float gray;
-  
   void initialize(){
-    gray = 0;
     initialize = false;
     playscene = new Play();
   }
   
   void drawScene(){
     if(initialize) initialize();
-    background(gray);
-    if(gray <= 255) gray+=2;
+    background(255);
     playscene.run();
   }
   
@@ -24,10 +20,24 @@ class PlayScene extends Scene{
 
 class Play{
   Play(){
-    
+    gameTime = millis() / 1000;
   }
   
   void run(){
-    
+    if(millis() / 1000 - gameTime < 1){
+      counter("3");
+    }else if((millis() / 1000 - gameTime >= 1) && (millis() / 1000 - gameTime < 2)){
+      counter("2");
+    }else if((millis() / 1000 - gameTime >= 2) && (millis() / 1000 - gameTime < 3)){
+      counter("1");
+    }
+  }
+
+  // カウント文字用表示関数
+  void counter(String cnt){
+    fill(0);
+    textSize(36);
+    text(cnt, width/2,height/2);
+    fill(255);
   }
 }

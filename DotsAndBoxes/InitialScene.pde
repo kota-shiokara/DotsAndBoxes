@@ -6,6 +6,7 @@ class InitialScene extends Scene{
   InitialScene(String _scene){
     scene = _scene;
     timer = millis() / 1000;
+    moveScene = false;
   }
   
   void initialize(){
@@ -15,7 +16,6 @@ class InitialScene extends Scene{
   
   void drawScene(){
     if(millis() / 1000 - timer > 1.5) moveScene = true;
-    else initialize();
     background(0);
     fill(255);
 

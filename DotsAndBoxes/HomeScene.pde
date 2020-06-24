@@ -13,7 +13,7 @@ class HomeScene extends Scene{
   void drawScene(){
     if(initialize) initialize();
     background(gray);
-    if(gray <= 255) gray+=2;
+    if(gray <= 255) gray+=3;
     else homescene.run();
   }
   
@@ -24,10 +24,14 @@ class HomeScene extends Scene{
 }
 
 class Home{
+
   private float bx, by; // 仮のボタン用変数
+
   Home(){
     bx = width / 2;
     by = height / 2;
+
+    sceneTime = millis() / 1000;
   }
   
   void run(){
@@ -37,16 +41,32 @@ class Home{
     button();
   }
 
-  void button(){ // 仮のボタン用関数
+  // 仮のボタン用関数
+  void button(){
     if((mouseX > bx - 75) && (mouseX < bx + 75) && (mouseY > by - 25) && (mouseY < by + 25)){
       fill(124);
+      stroke(0);
       ellipse(bx, by, 150, 50);
+      noStroke();
       if(mousePressed){
         moveScene = true;
       }
     }else{
       fill(255);
+      stroke(0);
       ellipse(bx, by, 150, 50);
+      noStroke();
     }
+  }
+}
+
+// ホーム設置用ボタン
+class HomeButton{
+  int[] boxLine = {1,2,1,2};
+  HomeButton(){
+    boxLine[floor(random(4))] = 0;
+  }
+  void display(){
+
   }
 }
