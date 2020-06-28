@@ -30,6 +30,10 @@ class Play{
       counter("2");
     }else if((millis() / 1000 - gameTime >= 2) && (millis() / 1000 - gameTime < 3)){
       counter("1");
+    }else if((millis() / 1000 - gameTime >= 3) && (millis() / 1000 - gameTime < 4)){
+      counter("0");
+    }else{
+      playmain();
     }
   }
 
@@ -39,5 +43,9 @@ class Play{
     textSize(36);
     text(cnt, width/2,height/2);
     fill(255);
+  }
+
+  void playmain(){
+
   }
 }
