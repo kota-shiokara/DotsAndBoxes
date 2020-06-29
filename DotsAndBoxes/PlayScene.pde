@@ -19,8 +19,10 @@ class PlayScene extends Scene{
 }
 
 class Play{
+  private int[][] dots;
   Play(){
     gameTime = millis() / 1000;
+    dots = dotsSet(dotsMode);
   }
   
   void run(){
@@ -33,7 +35,7 @@ class Play{
     }else if((millis() / 1000 - gameTime >= 3) && (millis() / 1000 - gameTime < 4)){
       counter("0");
     }else{
-      playmain();
+      playMain();
     }
   }
 
@@ -45,7 +47,16 @@ class Play{
     fill(255);
   }
 
-  void playmain(){
+   private int[][] dotsSet(int dotsMode){
+     switch (dotsMode) {
+       case 0 : // 3*3のdots
+        return new int[3][3];
+       default :
+        return new int[3][3];
+     }
+  }
 
+  void playMain(){
+    
   }
 }
