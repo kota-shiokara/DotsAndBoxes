@@ -37,7 +37,7 @@ void setup(){
   smooth(32);
   noStroke();
   size(800, 450);
-  g = new InitialScene("Home");
+  g = new InitialScene("Play");
 }
 
 void draw(){
