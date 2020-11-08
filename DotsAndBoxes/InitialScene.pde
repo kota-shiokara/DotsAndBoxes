@@ -20,7 +20,8 @@ class InitialScene extends Scene{
     fill(255);
 
     textSize(14);
-    text("Loading...", width / 2 - 30, height / 2 + 30);
+    textAlign(CENTER);
+    text("Loading...", width / 2, height / 2);
   }
   
   Scene nextScene(){

@@ -37,7 +37,7 @@ class Home{
   void run(){
     fill(0);
     textSize(35);
-    text("Dots And Boxes",width / 3, height / 4); // 仮タイトル
+    text("Dots And Boxes",width / 2, height / 4); // 仮タイトル
     button();
   }
 

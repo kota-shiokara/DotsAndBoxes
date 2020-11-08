@@ -22,8 +22,10 @@ class Play{
   private int[][] dots;
   private int[][] wLines;
   private int[][] hLines;
+  private Player p;
   Play(){
     gameTime = millis() / 1000;
+    p = new Player();
     dotsSet(dotsMode);
   }
   
@@ -65,17 +67,35 @@ class Play{
 
   void playMain(){
     strokeWeight(8);
+    /*if(frameCount % 60 == 0){
+      wLines[int(random(0, 3))][int(random(0, 4))] = int(random(0, 3));
+      hLines[int(random(0, 3))][int(random(0, 4))] = int(random(0, 3));
+    }*/
     
     float w = width / wLines[0].length;
     float h = height / hLines[0].length;
-    //線
-    for(int i = 0; i < wLines.length; i++){
-      for(int j = 0; j < hLines[0].length; j++){
-        stroke(0, 255, 0);
-        //横
+    boolean wActive = false;
+    boolean hActive = false;
+    //横線
+    for(int j = 0; j < wLines[0].length; j++){
+      for(int i = 0; i < wLines.length; i++){
+        if(i * w + w / 2 < mouseX && mouseX < i * w + w * 1.5 && j * h + h / 2 - 10 < mouseY && mouseY < j * h + h / 2 + 20){
+          wActive = true;
+        }
+        p.colorMake(wLines[i][j], wActive);
         line(i * w + w / 2, j * h + h / 2, i * w + w * 1.5, j * h + h / 2);
-        //縦
+        wActive = false;
+      }
+    }
+    //縦線
+    for(int j = 0; j < hLines[0].length; j++){
+      for(int i = 0; i < hLines.length; i++){
+        if(j * w + w / 2 - 10 < mouseX && mouseX < j * w + w / 2 + 10 && i * h + h / 2 < mouseY && mouseY < i * h + h * 1.5){
+          hActive = true;
+        }
+        p.colorMake(hLines[i][j], hActive);
         line(j * w + w / 2, i * h + h / 2, j * w + w / 2, i * h + h * 1.5);
+        hActive = false;
       }
     }
 
@@ -93,5 +113,17 @@ class Play{
 }
 
 class Player{
+  Player(){
 
+  }
+  void colorMake(int playerId, boolean active){
+    int colPow = active ? 150 : 255;
+    if(playerId == 0){
+      stroke(0, colPow, 0);
+    }else if(playerId == 1){
+      stroke(colPow, 0, 0);
+    }else if(playerId == 2){
+      stroke(0, 0, colPow);
+    }
+  }
 }
