@@ -25,25 +25,24 @@ class HomeScene extends Scene{
 
 class Home{
 
-  private float bx, by; // 仮のボタン用変数
-
   Home(){
-    bx = width / 2;
-    by = height / 2;
-
     sceneTime = millis() / 1000;
     strokeWeight(1);
   }
   
   void run(){
     fill(0);
+    textAlign(CENTER);
     textSize(35);
-    text("Dots And Boxes",width / 2, height / 4); // 仮タイトル
-    button();
+    text("Dots And Boxes", width / 2, height / 3); // 仮タイトル
+    textAlign(LEFT);
+    textSize(10);
+    text("version " + VERSION, 10, height - 10);
+    button(width / 2, height * 2 / 3);
   }
 
   // 仮のボタン用関数
-  void button(){
+  void button(float bx, float by){
     if((mouseX > bx - 75) && (mouseX < bx + 75) && (mouseY > by - 25) && (mouseY < by + 25)){
       fill(124);
       stroke(0);

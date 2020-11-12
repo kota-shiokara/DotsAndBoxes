@@ -21,6 +21,9 @@ final String WHITE = "#FFFFFF";
 final float WINDOW_X = 800; // 横幅
 final float WINDOW_Y = 450; // 縦幅
 
+// 情報
+final float VERSION = 1.1;
+
 /*----- 変数宣言 -----*/
 boolean isClick = false; // クリック判定用変数
 boolean initialize = false; // 初期化用変数
@@ -30,8 +33,8 @@ float sceneTime; // シーンに入った時間
 float gameTime; // ゲーム開始の時間
 int winner = 0; // 勝者ID 
 
-// ドットの量 0:9*9
-int dotsMode = 0;
+// 一辺のドットの量
+int dotsNum = 4;
 
 /*----- オブジェクト -----*/
 Scene g;
@@ -60,6 +63,7 @@ abstract class Scene{
   abstract Scene nextScene();
 }
 
+// 使ってない
 void mousePressed(){
   isClick = !isClick;
 }

@@ -26,13 +26,8 @@ class Play{
   private Player p;
   Play(){
     gameTime = millis() / 1000;
-    switch (dotsMode) {
-      case 0 : // 4*4のdots
-        p = new Player(3, 3);
-      default :
-        p = new Player(3, 3);
-    }
-    dotsSet(dotsMode);
+    p = new Player(dotsNum - 1, dotsNum - 1);
+    dotsSet(dotsNum);
   }
   
   void run(){
@@ -58,17 +53,10 @@ class Play{
     fill(255);
   }
 
-  private void dotsSet(int dotsMode){
-    switch (dotsMode) {
-      case 0 : // 4*4のdots
-        dots = new int[4][4];
-        wLines = new int[3][4];
-        hLines = new int[3][4];
-      default :
-        dots = new int[4][4];
-        wLines = new int[3][4];
-        hLines = new int[3][4];
-    }
+  private void dotsSet(int dotsNum){
+    dots = new int[dotsNum][dotsNum];
+    wLines = new int[dotsNum-1][dotsNum];
+    hLines = new int[dotsNum-1][dotsNum];
   }
 
   void colorMake(int playerId, boolean active){
