@@ -7,6 +7,8 @@ class InitialScene extends Scene{
     scene = _scene;
     timer = millis() / 1000;
     moveScene = false;
+    strokeWeight(1);
+    stroke(0);
   }
   
   void initialize(){
@@ -38,6 +40,8 @@ class InitialScene extends Scene{
         return new HomeScene();
       case "Play":
         return new PlayScene();
+      case "Result":
+        return new ResultScene();
       default:
         return this;
     }

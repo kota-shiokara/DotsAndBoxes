@@ -32,6 +32,7 @@ class Home{
     by = height / 2;
 
     sceneTime = millis() / 1000;
+    strokeWeight(1);
   }
   
   void run(){

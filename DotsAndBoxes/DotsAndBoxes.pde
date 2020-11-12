@@ -3,6 +3,8 @@
   - fill(255);
 - 基本の輪郭は無し
   - noStroke();
+- 線の太さ
+  - strokeWeight(1);
 - オブジェクトの前に色変の関数をつけること
 - 新しいシーンにいくときはInitialScene("Hoge");でInitialSceneを経由していく
   - 新しいシーンを作成する場合はInitialSceneのSceneTerminal()に行先を記述していく
@@ -26,6 +28,7 @@ boolean moveScene = false; // シーン移動用変数
 float currentTime;
 float sceneTime; // シーンに入った時間
 float gameTime; // ゲーム開始の時間
+int winner = 0; // 勝者ID 
 
 // ドットの量 0:9*9
 int dotsMode = 0;

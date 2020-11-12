@@ -14,6 +14,7 @@ class PlayScene extends Scene{
   }
   
   Scene nextScene(){
+    if(moveScene) return new InitialScene("Result");
     return this;
   }
 }
@@ -106,8 +107,8 @@ class Play{
     for(int j = 0; j < p.boxes[0].length; j++){
       for(int i = 0; i < p.boxes.length; i++){
         if(p.boxes[i][j].getStatus() != 0){
-          if(p.boxes[i][j].getStatus() == 1) fill(255, 0, 0);
-          else fill(0, 0, 255);
+          if(p.boxes[i][j].getStatus() == 1) fill(150, 0, 0);
+          else fill(0, 0, 150);
           rect(i * w + w / 2, j * h + h / 2, w, h);
           fill(255);
         }
@@ -129,6 +130,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[i][j-1].setStatus(wLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
               //下のボックス
               p.boxes[i][j].setLines(0);
@@ -136,6 +138,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[i][j].setStatus(wLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
             }else if(j == 0){
               // 下のみボックス
@@ -144,6 +147,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[i][j].setStatus(wLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
             }else if(j == hLines[0].length - 1){
               // 上のみボックス
@@ -152,6 +156,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[i][j-1].setStatus(wLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
             }
           }
@@ -177,6 +182,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[j-1][i].setStatus(hLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
               //右のボックス
               p.boxes[j][i].setLines(3);
@@ -184,6 +190,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[j][i].setStatus(hLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
             }else if(j == 0){
               // 右のみボックス
@@ -192,6 +199,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[j][i].setStatus(hLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
             }else if(j == hLines[0].length - 1){
               // 左のみボックス
@@ -200,6 +208,7 @@ class Play{
                 // ボックスが取られた時
                 p.boxes[j-1][i].setStatus(hLines[i][j]);
                 getBox = true;
+                if(p.gameSetCheck() != -1) moveScene = true;
               }
             }
           }
@@ -254,6 +263,18 @@ class Player{
     }else{
       return "Blue";
     }
+  }
+
+  int gameSetCheck(){
+    int[] cnt = new int[]{0, 0, 0};
+    for(int j = 0; j < boxes[0].length; j++){
+      for(int i = 0; i < boxes.length; i++){
+        if(boxes[i][j].status == 0) return -1;
+        cnt[boxes[i][j].status]++;
+      }
+    }
+    winner = cnt[1] > cnt[2] ? 1 : 2;
+    return winner;
   }
 }
 
