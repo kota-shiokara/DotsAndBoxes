@@ -17,7 +17,7 @@ class InitialScene extends Scene{
   }
   
   void drawScene(){
-    if(millis() / 1000 - timer > 1.5) moveScene = true;
+    if(millis() / 1000 - timer > 0.5) moveScene = true;
     background(0);
     fill(255);
 
